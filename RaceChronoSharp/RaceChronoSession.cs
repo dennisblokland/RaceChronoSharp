@@ -12,9 +12,9 @@ namespace RaceChronoSharp
     {
         public RaceChronoSessionMetadata Metadata { get; set; } = new();
         public List<RaceChronoDataPoint> DataPoints { get; set; } = [];
-        public static RaceChronoSession Parse(string path)
-        {
 
+        public static RaceChronoSession Parse(StreamReader reader)
+        {
             CsvConfiguration config = new(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = true,
@@ -22,8 +22,6 @@ namespace RaceChronoSharp
                 HeaderValidated = null,
                 IgnoreBlankLines = true
             };
-
-            using StreamReader reader = new(path);
             using CsvReader csv = new(reader, config);
 
             // Skip metadata lines (assume 9)
@@ -43,8 +41,13 @@ namespace RaceChronoSharp
                 DataPoints = records
             };
         }
+        public static RaceChronoSession Parse(string path)
+        {
+            using StreamReader reader = new(path);
+            return Parse(reader);
+        }
 
-        public static RaceChronoSessionMetadata ReadRaceChronoMetadata(StreamReader reader)
+        private static RaceChronoSessionMetadata ReadRaceChronoMetadata(StreamReader reader)
         {
             RaceChronoSessionMetadata metadata = new();
 
@@ -93,35 +96,6 @@ namespace RaceChronoSharp
             }
 
             return metadata;
-        }
-        public static string[] RenameDuplicateHeaders(string[] headers)
-        {
-            Dictionary<string, int> seen = new();
-            string[] result = new string[headers.Length];
-
-            for (int i = 0; i < headers.Length; i++)
-            {
-                string header = headers[i];
-                if (string.IsNullOrWhiteSpace(header))
-                {
-                    result[i] = $"unnamed{i}";
-                    continue;
-                }
-
-                if (seen.TryGetValue(header, out int count))
-                {
-                    count++;
-                    seen[header] = count;
-                    result[i] = $"{header}_{count}";
-                }
-                else
-                {
-                    seen[header] = 1;
-                    result[i] = header;
-                }
-            }
-
-            return result;
         }
 
     }
