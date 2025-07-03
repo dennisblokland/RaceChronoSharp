@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaceChronoSharp", "RaceChronoSharp\RaceChronoSharp.csproj", "{D5771DA9-28EB-40CA-ACCA-FB451FF0501D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaceChronoSharp.Example", "RaceChronoSharp.Example\RaceChronoSharp.Example.csproj", "{B639893D-733B-4AB2-B750-74D19AAB87F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5771DA9-28EB-40CA-ACCA-FB451FF0501D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5771DA9-28EB-40CA-ACCA-FB451FF0501D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5771DA9-28EB-40CA-ACCA-FB451FF0501D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5771DA9-28EB-40CA-ACCA-FB451FF0501D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B639893D-733B-4AB2-B750-74D19AAB87F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B639893D-733B-4AB2-B750-74D19AAB87F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B639893D-733B-4AB2-B750-74D19AAB87F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B639893D-733B-4AB2-B750-74D19AAB87F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
