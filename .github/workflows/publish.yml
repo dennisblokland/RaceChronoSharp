@@ -21,6 +21,12 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
+      - name: Build
+        run: dotnet build -c Release
+
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal
+
       - name: Calculate build version
         id: version
         run: |
@@ -31,7 +37,7 @@ jobs:
           echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Pack NuGet package
-        run: dotnet pack -c Release -p:PackageVersion=${{ steps.version.outputs.VERSION }} -o ./nupkgs
+        run: dotnet pack ~/ -c Release -p:PackageVersion=${{ steps.version.outputs.VERSION }} -o ./nupkgs --no-restore --no-build
 
       - name: Push to NuGet.org
         run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
